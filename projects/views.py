@@ -50,7 +50,11 @@ class ProjectCreateView(CreateView):
         verb = f'New Project Assignment,{project.name}'
         object_id = project.id
 
-        create_notification.delay(actor_username=actor_username, verb=verb, object_id=object_id)
+        try:
+            create_notification.delay(actor_username=actor_username, verb=verb, object_id=object_id)
+        except Exception as e:
+            print(e)
+
         return redirect(self.get_success_url())
     
     def get_success_url(self):
@@ -91,7 +95,10 @@ class ProjectUpdateView(UpdateView):
         verb = f'Updated Project: {project.name}'
         object_id = project.id
 
-        create_notification.delay(actor_username=actor_username, verb=verb, object_id=object_id)
+        try:
+            create_notification.delay(actor_username=actor_username, verb=verb, object_id=object_id)
+        except Exception as e:
+            print(e)
         return redirect(self.success_url)
     
 class ProjectListView(ListView):
@@ -195,7 +202,10 @@ class ProjectDetailView(DetailView):
                 verb = f'{actor_full_name} commented on {project.name}'
                 print("Calling notification from project","Actor: ",actor_username," Verb: ",verb," Object Id: ",project.id)
 
-                create_notification.delay(actor_username=actor_username, verb=verb, object_id=project.id)
+                try:
+                    create_notification.delay(actor_username=actor_username, verb=verb, object_id=project.id)
+                except Exception as e:
+                    print(e)
 
                 messages.success(request, 'Comment added successfully')
                 return redirect('projects:project-detail', pk=project.pk)
