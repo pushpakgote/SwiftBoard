@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Confirm Deletion</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Are you sure you want to delete : "<strong>{{ object.name }}</strong>"?</p>
+                            <p style="color: red;">This action cannot be undone.</p>
+                            {% if request.resolver_match.app_name == 'teams' and request.resolver_match.url_name == 'delete' %}
+                                <p><small>Associated projects might need to be reassigned or will be affected if the relationship is set to cascade delete.</small></p>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer">
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                                <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

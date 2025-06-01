@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }}|{{ block.super }} {% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <!-- <h4 class="mb-0">{{ header_text }}</h4> -->
+                     {% if user_profile == request.user %}
+                    <a href="{% url 'accounts:profile-edit' %}" class="btn btn-outline-light btn-sm profile-edit-btn">
+                        <i class="fas fa-edit me-1 icon-color"></i> <span class="text-color">Edit Profile</span>
+                    </a>
+                    {% endif %}
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="{{ profile_data.profile_picture_url }}" alt="{{ user_profile.username }}'s profile picture" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                            <h5>{{ user_profile.get_full_name }}</h5>
+                            <p class="text-muted">{{ profile_data.job_title|default:"No job title specified" }}</p>
+                        </div>
+                        <div class="col-md-8">
+                            <h5>Account Information</h5>
+                            <hr class="mt-1 mb-3">
+                            <dl class="row">
+                                <dt class="col-sm-4">Username:</dt>
+                                <dd class="col-sm-8">{{ user_profile.username }}</dd>
+                                
+                                <dt class="col-sm-4">First Name:</dt>
+                                <dd class="col-sm-8">{{ user_profile.first_name|default:"N/A" }}</dd>
+
+                                <dt class="col-sm-4">Last Name:</dt>
+                                <dd class="col-sm-8">{{ user_profile.last_name|default:"N/A" }}</dd>
+                                
+                                <dt class="col-sm-4">Email:</dt>
+                                <dd class="col-sm-8">{{ user_profile.email }}</dd>
+                                
+                            </dl>
+
+                            <h5 class="mt-4">Profile Details</h5>
+                            <hr class="mt-1 mb-3">
+                            <dl class="row">
+                                <dt class="col-sm-4">Bio:</dt>
+                                <dd class="col-sm-8">{{ profile_data.bio|default:"No bio provided."|linebreaksbr }}</dd>
+
+                                <dt class="col-sm-4">Location:</dt>
+                                <dd class="col-sm-8">{{ profile_data.location|default:"N/A" }}</dd>
+
+                                <dt class="col-sm-4">Phone:</dt>
+                                <dd class="col-sm-8">{{ profile_data.phone|default:"N/A" }}</dd>
+
+                                <dt class="col-sm-4">Date of Birth:</dt>
+                                <dd class="col-sm-8">{{ profile_data.date_of_birth|date:"F d, Y"|default:"N/A" }}</dd>
+
+                                <dt class="col-sm-4">Joined:</dt>
+                                <dd class="col-sm-8">{{ user_profile.date_joined|date:"F d, Y" }} ({{ profile_data.date_joined }})</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Optional: Add some custom styles if needed */
+    .card-header h4 {
+        font-weight: 500;
+    }
+    .profile-edit-btn:hover .icon-color,
+    .profile-edit-btn:hover .text-color {
+        color: black !important;
+    }
+    .profile-edit-btn .icon-color,
+    .profile-edit-btn .text-color {
+        color: rgb(255, 255, 255) !important;
+    }
+
+</style>
+{% endblock %}

@@ -1,0 +1,147 @@
+{% load static %}
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %} ">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}" >
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+<!-- Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<style>
+  /* General select2 adjustments */
+  .select2-container .select2-selection--single,
+  .select2-container .select2-selection--multiple {
+      background-color: transparent !important;
+      border: 1px solid #878787;
+      color: white !important;
+  }
+
+  /* Selected text in single select */
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+      color: white !important;
+  }
+
+  /* Placeholder text */
+  .select2-container--default .select2-selection--single .select2-selection__placeholder,
+  .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+      color: #ccc !important;
+  }
+
+  /* Dropdown list */
+  .select2-container--default .select2-results > .select2-results__options {
+      /* background-color: transparent;  dropdown bg */
+      background-color: #222; /* Dark dropdown bg */
+      color: white;
+  }
+
+  .select2-container--default .select2-results__option--highlighted[aria-selected] {
+      background-color: #444 !important;
+      color: white !important;
+  }
+
+  /* MULTIPLE SELECT: Tag styling */
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      background-color: #555 !important;
+      border: none;
+      color: white !important;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+      color: #eee !important;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+      color: red !important;
+  }
+
+/* Base color for dropdown options */
+.select2-container--default .select2-results__option {
+  background-color: #222;
+  color: white;
+}
+
+/* Hover over any option */
+.select2-container--default .select2-results__option--highlighted {
+  background-color: #787676 !important;
+  color: white !important;
+}
+
+/* Already selected item (not hovered) */
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #333 !important;
+  color: white;
+}
+
+/* Already selected item + hovered */
+.select2-container--default .select2-results__option--highlighted[aria-selected=true] {
+  background-color: #444 !important;
+  color: white !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #444 !important;
+  color: white !important;
+  border: none;
+}
+
+/* Completely remove focus ring/box from multi-select input */
+.select2-container--default .select2-selection--multiple .select2-search__field:focus,
+.select2-container--default .select2-selection--multiple .select2-search__field:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Firefox-specific fix */
+.select2-container--default .select2-selection--multiple .select2-search__field::-moz-focus-inner {
+    border: 0;
+    outline: none;
+}
+.select2-container--default .select2-results__option {
+    transition: background-color 0.2s ease;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: #878787 !important;
+    box-shadow: none !important;
+}
+
+
+
+
+/* Team detail edit and delete team buttons */
+.btn-edit-team,
+.btn-delete-team {
+    flex: 1;
+    background-color: transparent !important;
+    border: 1px solid white;
+    padding: 10px 16px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-edit-team b {
+    color: #3c8dbc; /* Bootstrap primary blue */
+}
+
+.btn-delete-team b {
+    color: #dc3545; /* Bootstrap danger red */
+}
+
+/* Hover Effects */
+.btn-edit-team:hover {
+    /* background-color: #3c8dbc !important; */
+    background-color: #565656 !important;
+    color: #ffffff !important;
+}
+
+.btn-delete-team:hover {
+    /* background-color: #dc3545 !important; */
+    background-color: #565656 !important;
+    color: white !important;
+}
+
+
+</style>
+
