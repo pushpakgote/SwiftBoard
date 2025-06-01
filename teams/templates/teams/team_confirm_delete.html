@@ -18,7 +18,7 @@
                             <p>Are you sure you want to delete : "<strong>{{ object.name }}</strong>"?</p>
                             <p style="color: red;">This action cannot be undone.</p>
                             {% if request.resolver_match.app_name == 'teams' and request.resolver_match.url_name == 'delete' %}
-                                <p><small>Associated projects might need to be reassigned or will be affected if the relationship is set to cascade delete.</small></p>
+                                <p><small>Associated projects might need to be reassigned or will be affected.</small></p>
                             {% endif %}
                         </div>
                         <div class="card-footer">
